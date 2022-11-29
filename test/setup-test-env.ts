@@ -1,4 +1,8 @@
 import { installGlobals } from "@remix-run/node";
-import "@testing-library/jest-dom/extend-expect";
+import "@testing-library/jest-dom";
+import { JSDOM } from "jsdom";
 
-installGlobals();
+installGlobals()
+
+const jsdom = new JSDOM(`<!doctype html>`);
+globalThis.FormData = jsdom.window.FormData;
